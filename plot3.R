@@ -33,10 +33,10 @@ data <- data[data$Date == day1 | data$Date == day2,]
 # into elapsed time.
 data <- mutate(data, datetime = as.POSIXct(data$Date + data$Time))
 
-# Create plot, units are scaled in the plot function calls as needed for
-# the project
+# Create plots, units are scaled in the plot function calls as needed for
+# the project. Explicitly set the size of the plot.
 
-png("plot3.png")
+png("plot3.png", width = 480, height = 480)
 with(data, {
   plot(datetime, 
        Sub_metering_1/1000 ,

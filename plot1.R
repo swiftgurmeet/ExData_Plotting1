@@ -34,9 +34,9 @@ data <- data[data$Date == day1 | data$Date == day2,]
 data <- mutate(data, datetime = as.POSIXct(data$Date + data$Time))
 
 # Create plots, units are scaled in the plot function calls as needed for
-# the project
+# the project. Explicitly set the size of the plot.
 
-png("plot1.png")
+png("plot1.png", width = 480, height = 480)
 with(data, {
   hist(Global_active_power/1e3, 
        col=2, 
