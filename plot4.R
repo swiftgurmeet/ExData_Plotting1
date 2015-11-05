@@ -54,6 +54,12 @@ with(data, {
        xlab = "", 
        ylab = "Energy sub metering", 
        col =1)
+  legend("topright", 
+         legend = c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"), 
+         col = c("black","red","blue"), 
+         lty = "solid",
+         bty = "n"
+  )
   points(datetime, 
          Sub_metering_2,
          type = "l", 
@@ -66,10 +72,7 @@ with(data, {
          xlab = "", 
          ylab = "Energy sub metering", 
          col =4)
-  legend("topright", 
-         legend = c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"), 
-         col = c("black","red","blue"), 
-         lty = "solid")
+
   plot(datetime, 
        Global_reactive_power,type = "l", 
        xlab = "datetime", 

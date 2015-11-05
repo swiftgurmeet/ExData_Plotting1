@@ -39,9 +39,9 @@ data <- mutate(data, datetime = as.POSIXct(data$Date + data$Time))
 png("plot2.png", width = 480, height = 480)
 with(data, {
   plot(datetime, 
-       Global_active_power, 
-       xlab="", 
+       Global_active_power,
+       xlab = "",
        ylab="Global Active Power (kilowatts)", 
-       type="line")
+       type="l")
 })
 dev.off()
