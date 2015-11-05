@@ -7,9 +7,10 @@ library(readr)
 library(dplyr)
 
 # Read the input data treating "NA","" and "?" as NA
-data <- read_csv2("household_power_consumption.txt", 
-               na = c("NA","","?"),
-               col_types = list(
+data <- read_delim("household_power_consumption.txt", 
+                 delim = ";",
+                 na = c("NA","","?"),
+                 col_types = list(
                  Date = col_character(),
                  Time = col_time(),
                  Global_active_power = col_number(),
@@ -33,25 +34,24 @@ data <- data[data$Date == day1 | data$Date == day2,]
 # into elapsed time.
 data <- mutate(data, datetime = as.POSIXct(data$Date + data$Time))
 
-# Create plots, units are scaled in the plot function calls as needed for
-# the project. Explicitly set the size of the plot.
+# Create plots, explicitly set the size of the plot.
 
 png("plot3.png", width = 480, height = 480)
 with(data, {
   plot(datetime, 
-       Sub_metering_1/1000 ,
+       Sub_metering_1,
        type = "l", 
        xlab = "", 
        ylab = "Energy sub metering", 
        col =1)
   points(datetime, 
-         Sub_metering_2/1000 ,
+         Sub_metering_2,
          type = "l", 
          xlab = "", 
          ylab = "Energy sub metering", 
          col =2)
   points(datetime, 
-         Sub_metering_3/1000 ,
+         Sub_metering_3,
          type = "l", 
          xlab = "", 
          ylab = "Energy sub metering", col =4)
